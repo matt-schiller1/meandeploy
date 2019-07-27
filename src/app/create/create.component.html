@@ -1,0 +1,8 @@
+<h1>Create a New Product</h1>
+<p *ngFor='let err of errors'> {{err}}</p>
+<form (submit)="addProduct()">
+  <p>Title: <input type="text" name="title" [(ngModel)]="newProduct.title"></p>
+  <p>Price: <input type="text" name="price" [(ngModel)]="newProduct.price"></p>
+  <p>Image URL: <input type="text" name="url" [(ngModel)]="newProduct.url"></p>
+  <input type="submit" value="submit"><button (click)="onCancel()">Cancel</button>
+</form>

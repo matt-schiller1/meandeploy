@@ -1,0 +1,16 @@
+<h1>Edit Product</h1>
+<p *ngFor='let err of errors'> {{err.message}}</p>
+
+<form #editForm='ngForm' (submit)="editThisProduct(editForm.value)">
+  <input type="hidden" name="_id" [ngModel]="editProduct._id">
+  <div *ngIf="title.errors">
+    Title must be at least 3 characters
+  </div>
+  <p>Title:<input type="text" name="title" required minlength="3" [(ngModel)]="editProduct.title" #title="ngModel"></p>
+  <p>Price: <input type="text" name="price" [(ngModel)]="editProduct.price"></p>
+  <p>Image URL: <input type="text" name="url" [(ngModel)]="editProduct.url"></p>
+  <input type="Submit" [disabled]="!title.valid" value="Submit"><button [routerLink]="['/products']">Cancel</button>
+
+  {{ title.errors | json }}
+  {{ title.valid | json}}
+</form>
